@@ -60,7 +60,45 @@
         //Associate the styled map with the MapTypeId and set it to display.
         map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');
+
+        addMarker();
+
+        var goldStar = {
+          path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+          fillColor: 'yellow',
+          fillOpacity: 0.8,
+          scale: 1,
+          strokeColor: 'gold',
+          strokeWeight: 14
+        };
+
+        var marker = new google.maps.Marker({
+          position: map.center,
+          icon: goldStar,
+          map: map
+        });
+        console.log(map);
+
       }
+
+      function customizeMarker(size) {
+        var image = {
+          url: 'http://tecfa.unige.ch/guides/svg/ex/html5/svg-import/huge-red-circle.svg',
+          size: new google.maps.Size(size,size),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(0, 32)
+        };
+        return image;
+      }
+
+      function addMarker() {
+        var marker = new google.maps.Marker({
+          position: {lat: 42.1884282, lng: -71.7174393},
+          icon: customizeMarker(40),
+          map: map
+        });
+      }
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk5fD0WF4USa_ABfJSzwj5Ix-HvdVUXbY&callback=initMap">
