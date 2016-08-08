@@ -127,7 +127,9 @@
         map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');
 
-        addMarker(map, 30, 42.42, -71.72);
+        for (i=0; i<info_list.length; i++) {
+          addMarker(map, info_list[2], info_list[0], info_list[1]);
+        }
 
       }
 
