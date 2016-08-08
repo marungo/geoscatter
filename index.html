@@ -19,7 +19,6 @@
     <div id="map"></div>
     <script>
       function initMap() {
-
         // Create a new StyledMapType object, passing it an array of styles,
         // and the name to be displayed on the map type control.
         var styledMapType = new google.maps.StyledMapType(
@@ -61,40 +60,32 @@
         map.mapTypes.set('styled_map', styledMapType);
         map.setMapTypeId('styled_map');
 
-        addMarker();
-
-        var goldStar = {
-          path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-          fillColor: 'yellow',
-          fillOpacity: 0.8,
-          scale: 1,
-          strokeColor: 'gold',
-          strokeWeight: 14
-        };
-
-        var marker = new google.maps.Marker({
-          position: map.center,
-          icon: goldStar,
-          map: map
-        });
-        console.log(map);
+        addMarker(map,1,2);
 
       }
 
       function customizeMarker(size) {
+        console.log("logging customizeMarker call");
         var image = {
           url: 'http://tecfa.unige.ch/guides/svg/ex/html5/svg-import/huge-red-circle.svg',
-          size: new google.maps.Size(size,size),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(0, 32)
+          size: new google.maps.Size(size,size)
         };
         return image;
       }
 
-      function addMarker() {
+      function addMarker(map, lt, lng) {
+        console.log("logging addMarker() call");
         var marker = new google.maps.Marker({
-          position: {lat: 42.1884282, lng: -71.7174393},
-          icon: customizeMarker(40),
+          position: {lat: 42.43, lng: -71.7174393},
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 3,
+            fillColor: 'red',            
+            strokeColor: 'red',
+            fillOpacity: 0.8,
+            strokeOpacity: 0.8,
+            strokeScale: 1,
+          },
           map: map
         });
       }
