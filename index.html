@@ -393,27 +393,27 @@
       }
 
       function populateMapPrep() {
-        populateMap(map, prep_list, 'red', 'PrEP');
+        populateMap(map, prep_list, 'red', 'PrEP',1);
       }
       
       function populateMapPos() {
-        populateMap(map, pos_list, 'purple', 'HIV Positive');
+        populateMap(map, pos_list, 'purple', 'HIV Positive',1);
       }
 
       function populateMapUnd() {
-        populateMap(map, und_list, 'green', 'HIV Undetectable');
+        populateMap(map, und_list, 'green', 'HIV Undetectable',1);
       }
 
       function populateMapNeg() {
-        populateMap(map, neg_list, 'yellow', 'HIV Negative');
+        populateMap(map, neg_list, 'yellow', 'HIV Negative', 30);
       }
 
 
-      function populateMap(map, list, color, status) {
+      function populateMap(map, list, color, status, scale) {
         removeMarkers();
         for (i=0; i<prep_list.length; i++) {
           addMarker(map, parseFloat(list[i][0]), parseFloat(list[i][1]), 
-                         parseFloat(list[i][2]), list[i][3], color, status);
+                         parseFloat(list[i][2]), scale, list[i][3], color, status);
         }
       }
 
@@ -430,10 +430,10 @@
         return image;
       }
 
-      function addMarker(map, lt, ln, size, info, color, status) {
+      function addMarker(map, lt, ln, size, scale, info, color, status) {
         var marker = new google.maps.Marker({
           position: {lat: lt, lng: ln},
-          icon: customizeMarker(size, color),
+          icon: customizeMarker(size/scale, color),
           map: map
         });
         var infowindow = new google.maps.InfoWindow({
