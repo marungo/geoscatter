@@ -102,7 +102,7 @@
       function populateMapPrep() {
         populateMap(map, prep_list, 'red', 'PrEP',1);
         document.getElementById("title-panel").innerHTML = "PrEP Users";
-        document.getElementById("title-panel").style.backgroundColor = 'rgba(255,255,255,.7)';
+        document.getElementById("title-panel").style.backgroundColor = 'rgba(255,255,255,.7 )';
       }
       
       function populateMapPos() {
@@ -121,7 +121,7 @@
 
       function populateMapNeg() {
         populateMap(map, neg_list, 'DarkBlue', 'HIV Negative', 30);
-        document.getElementById("title-panel").innerHTML = "HIV Negative Users";
+        document.getElementById("title-panel").innerHTML = "HIV Negative Users <br>(scaled to 1/30)";
         document.getElementById("title-panel").style.backgroundColor = 'rgba(255,255,255,.7)';
 
         console.log("HIV Negative Users group scaled down by factor of 30")
